@@ -5,11 +5,12 @@ import { ButtonColor, HeadingColor, height, inputStyle, MM, MR, MS, width } from
 import { BackButton, Bold, CalculateButton, CalculationText, DecimalIn2, entering, exiting, InputInterest, InputPrincipal, InterestText, PieChartComponent, PieText, ResetButton, ScreenTitle, SimpleText, TextInputTitle, TextInputTitleResult, YearText } from '../../constants/ReUsableComponents';
 import { Table, Row, Rows, TableWrapper } from 'react-native-table-component';
 import Animated from 'react-native-reanimated';
-import { SwitchButtonGroup } from '../SwitchButtonGroup';
+import SegmentControl from '../SegmentControl';
 import { AdBanner, LoadInterstitial, LoadRewardedInterstitial, ShowInterstitial, ShowRewardedInterstitial, interstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
 import Colors from '../../constants/Colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const CompoundInterest = () => {
     const colorScheme = useColorScheme();
@@ -177,14 +178,14 @@ export const CompoundInterest = () => {
     };
 
     return (
-        <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
+        <SafeAreaView style={{ backgroundColor: themeColors.background, flex: 1 }} edges={['top']}>
             <StatusBar style='dark' />
             <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
                 <FlatList
                     showsVerticalScrollIndicator={false}
                     nestedScrollEnabled={false}
                     ListHeaderComponent={
-                        <View style={{ paddingHorizontal: 20, paddingTop: 20 }}>
+                        <View style={{ paddingHorizontal: 20 }}>
                             <BackButton />
 
                             <ScreenTitle title={'Compound Interest Calculation'} />
@@ -196,11 +197,10 @@ export const CompoundInterest = () => {
                                     <InputInterest text={'INTEREST RATE (APR %)'} value={rate} onChangeText={(text) => { setEndBalance(); setRate(text) }} />
                                 </View>
                                 <View>
-                                    <SwitchButtonGroup
-                                        options={options2}
-                                        activeOption={term}
-                                        onChange={handleChangeTerm}
-                                        widthOption={40}
+                                    <SegmentControl
+                                        values={options2}
+                                        selectedIndex={options2.indexOf(term)}
+                                        onChange={(index) => handleChangeTerm(options2[index])}
                                     />
                                     <TextInput
                                         placeholder={term == 'Y' ? '22' : '333'}
@@ -220,11 +220,10 @@ export const CompoundInterest = () => {
                                 <TextInputTitle text={'COMPOUNDING FREQUENCY'} />
                             </View>
 
-                            <SwitchButtonGroup
-                                options={options}
-                                activeOption={compounding}
-                                onChange={handleOptionChange}
-                                widthOption={width / 4 - 10}
+                            <SegmentControl
+                                values={options}
+                                selectedIndex={options.indexOf(compounding)}
+                                onChange={(index) => handleOptionChange(options[index])}
                             />
 
                             <CalculateButton onPress={handleCalculate} />
@@ -287,7 +286,7 @@ export const CompoundInterest = () => {
                 />
             </TouchableWithoutFeedback>
             <AdBanner />
-        </View>
+        </SafeAreaView>
     );
 }
 
