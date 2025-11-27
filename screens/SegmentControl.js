@@ -4,7 +4,7 @@ import SegmentedControl from '@react-native-segmented-control/segmented-control'
 import Colors from '../constants/Colors';
 import HapticFeedback from 'react-native-haptic-feedback';
 import { feedbackOptions } from '../constants/ReUsableComponents';
-import { MR, MS } from '../constants/Layout';
+import { ML, MR, MS } from '../constants/Layout';
 
 export const SegmentControl = ({ values, selectedIndex, onChange }) => {
   const colorScheme = useColorScheme();
@@ -29,12 +29,11 @@ export const SegmentControl = ({ values, selectedIndex, onChange }) => {
         activeFontStyle={{
           fontSize: 12,
           fontFamily:MS,
-          color: themeColors.background,
+          color: themeColors.text
         }}
         fontStyle={{
           fontSize: 12,
-          fontFamily:MR,
-          // color: themeColors.textSecondary,
+          fontFamily:ML,
         }}
         tintColor={themeColors.primary}
         // backgroundColor={themeColors.cardBackground}

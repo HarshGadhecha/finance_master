@@ -77,7 +77,7 @@ export const SimpleInterest = ({ navigation }) => {
             <InputPrincipal text={'PRINCIPAL AMOUNT'} value={principal} onChangeText={(text) => { setResult(); setPrincipal(text) }} />
 
             <View style={{ flexDirection: 'row', marginVertical: 10, alignItems: 'center' }}>
-              <View style={{ marginRight: 10 }}>
+              <View style={{ marginRight: 10,marginTop:30 }}>
                 <InputInterest text={'INTEREST RATE (APR %)'} value={rate} onChangeText={(text) => { setResult(); setRate(text) }} />
               </View>
               <View>
@@ -94,7 +94,7 @@ export const SimpleInterest = ({ navigation }) => {
                   maxLength={date === 'MONTH' ? 3 : 4}
                   keyboardType={'decimal-pad'}
                   value={years}
-                  style={{ ...inputStyle.halfTextInput, ...inputStyle.textInputBackground }}
+                  style={{color: Colors[colorScheme ?? 'light'].text, ...inputStyle.halfTextInput, backgroundColor: Colors[colorScheme ?? 'light'].inputBackground, borderColor: Colors[colorScheme ?? 'light'].inputBackground, ...inputStyle.shadowBox }}
                   onChangeText={(text) => { setResult(); setYears(text); if (text.length == 4) Keyboard.dismiss() }}
                 />
               </View>

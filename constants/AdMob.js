@@ -98,9 +98,9 @@ export const AdBanner = () => {
                 size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
                 requestOptions={{
                     requestNonPersonalizedAdsOnly: true,
-                    networkExtras: {
-                        collapsible: 'bottom'
-                    }
+                    // networkExtras: {
+                    //     collapsible: 'bottom'
+                    // }
                 }}
             />
         </View>

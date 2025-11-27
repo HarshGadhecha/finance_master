@@ -193,7 +193,7 @@ export const CompoundInterest = () => {
                             <InputPrincipal text={'PRINCIPAL AMOUNT'} value={principal} onChangeText={(text) => { setEndBalance(); setPrincipal(text) }} />
 
                             <View style={{ flexDirection: 'row', marginVertical: 10, alignItems: 'center' }}>
-                                <View style={{ marginRight: 10, }}>
+                                <View style={{ marginRight: 10,marginTop:30 }}>
                                     <InputInterest text={'INTEREST RATE (APR %)'} value={rate} onChangeText={(text) => { setEndBalance(); setRate(text) }} />
                                 </View>
                                 <View>
@@ -205,10 +205,10 @@ export const CompoundInterest = () => {
                                     <TextInput
                                         placeholder={term == 'Y' ? '22' : '333'}
                                         maxLength={term == 'Y' ? 2 : 3}
-                                        placeholderTextColor={'lightgrey'}
+                                        placeholderTextColor={themeColors.inputPlaceholder}
                                         keyboardType={'number-pad'}
                                         value={years}
-                                        style={{ ...inputStyle.halfTextInput, ...inputStyle.textInputBackground, ...inputStyle.shadowBox }}
+                                        style={{ color: Colors[colorScheme ?? 'light'].text,...inputStyle.halfTextInput, backgroundColor: Colors[colorScheme ?? 'light'].inputBackground, borderColor: Colors[colorScheme ?? 'light'].inputBackground, ...inputStyle.shadowBox}}
                                         onChangeText={(text) => {
                                             setEndBalance();
                                             setYears(text);
