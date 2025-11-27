@@ -81,23 +81,55 @@ export const BackButton = () => {
     );
 };
 
-export const InputPrincipal = ({ text, value, onChangeText }) => {
+// Unified Styled Input Component
+// This component handles all input variations with consistent styling
+export const StyledInput = ({
+    label,                    // Label text to display above input
+    value,                    // Input value
+    onChangeText,            // Change handler
+    placeholder = '',        // Placeholder text
+    keyboardType = 'default', // Keyboard type: 'number-pad', 'decimal-pad', 'default', etc.
+    width = 'full',          // Width: 'full', 'half', or custom number
+    showCurrency = false,    // Show currency symbol in label
+    maxLength,               // Max length of input
+    customStyle = {},        // Additional custom styles
+    withShadow = true        // Whether to show shadow
+}) => {
     const colorScheme = useColorScheme();
     const themeColors = Colors[colorScheme ?? 'light'];
+
+    // Determine width style
+    let widthStyle;
+    if (width === 'full') {
+        widthStyle = inputStyle.fullTextInput;
+    } else if (width === 'half') {
+        widthStyle = inputStyle.halfTextInput;
+    } else if (typeof width === 'number') {
+        widthStyle = { width: width };
+    } else {
+        widthStyle = inputStyle.fullTextInput;
+    }
+
     return (
         <View>
-            <TextInputTitle text={text} c={'(' + CURRENCY_OPTIONS[selectedCurrencyIndex].symbol + ')'} />
+            <TextInputTitle
+                text={label}
+                c={showCurrency ? '(' + CURRENCY_OPTIONS[selectedCurrencyIndex].symbol + ')' : ''}
+            />
             <TextInput
-                placeholder='50000'
+                placeholder={placeholder}
                 value={value}
                 placeholderTextColor={themeColors.inputPlaceholder}
-                keyboardType={'number-pad'}
+                keyboardType={keyboardType}
+                maxLength={maxLength}
                 style={{
-                    ...inputStyle.fullTextInput,
+                    ...widthStyle,
                     backgroundColor: themeColors.inputBackground,
                     color: themeColors.inputText,
                     borderColor: themeColors.inputBorder,
-                    ...inputStyle.shadowBox
+                    borderWidth: 1,
+                    ...(withShadow ? inputStyle.shadowBox : {}),
+                    ...customStyle
                 }}
                 onChangeText={onChangeText}
             />
@@ -105,26 +137,33 @@ export const InputPrincipal = ({ text, value, onChangeText }) => {
     )
 }
 
-export const InputInterest = ({ text, value, onChangeText }) => {
-    const colorScheme = useColorScheme();
-    const themeColors = Colors[colorScheme ?? 'light'];
+// Backward compatibility - keep old components for existing code
+export const InputPrincipal = ({ text, value, onChangeText }) => {
     return (
-        <View>
-            <TextInputTitle text={text} />
-            <TextInput
-                placeholder='7.25'
-                value={value}
-                placeholderTextColor={themeColors.inputPlaceholder}
-                keyboardType={'decimal-pad'}
-                style={{
-                    ...inputStyle.halfTextInput,
-                    backgroundColor: themeColors.inputBackground,
-                    color: themeColors.inputText,
-                    borderColor: themeColors.inputBorder
-                }}
-                onChangeText={onChangeText}
-            />
-        </View>
+        <StyledInput
+            label={text}
+            value={value}
+            onChangeText={onChangeText}
+            placeholder='50000'
+            keyboardType='number-pad'
+            width='full'
+            showCurrency={true}
+            withShadow={true}
+        />
+    )
+}
+
+export const InputInterest = ({ text, value, onChangeText }) => {
+    return (
+        <StyledInput
+            label={text}
+            value={value}
+            onChangeText={onChangeText}
+            placeholder='7.25'
+            keyboardType='decimal-pad'
+            width='half'
+            withShadow={true}
+        />
     )
 }
 

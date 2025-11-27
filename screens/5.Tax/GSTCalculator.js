@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TextInput, TouchableOpacity, useColorScheme, Platform } from 'react-native';
-import { BackButton, CalculateButton, ResetButton, TextInputTitle, feedbackOptions, CURRENCY_OPTIONS, selectedCurrencyIndex, DecimalIn2, CalculationText } from '../../constants/ReUsableComponents';
+import { BackButton, CalculateButton, ResetButton, TextInputTitle, StyledInput, feedbackOptions, CURRENCY_OPTIONS, selectedCurrencyIndex, DecimalIn2, CalculationText } from '../../constants/ReUsableComponents';
 import { height, width, inputStyle, MM, MS } from '../../constants/Layout';
 import Colors from '../../constants/Colors';
 import SegmentControl from '../SegmentControl';
@@ -179,23 +179,15 @@ export default function GSTCalculator() {
 
                     {/* Amount Input */}
                     <View style={{ marginVertical: 10 }}>
-                        <TextInputTitle
-                            text={calculationType === 'Exclusive' ? 'Amount (Before GST)' : 'Amount (Including GST)'}
-                            c={'(' + CURRENCY_OPTIONS[selectedCurrencyIndex].symbol + ')'}
-                        />
-                        <TextInput
-                            placeholder='10000'
+                        <StyledInput
+                            label={calculationType === 'Exclusive' ? 'Amount (Before GST)' : 'Amount (Including GST)'}
                             value={amount}
-                            placeholderTextColor={themeColors.inputPlaceholder}
-                            keyboardType='number-pad'
-                            style={{
-                                ...inputStyle.fullTextInput,
-                                backgroundColor: themeColors.inputBackground,
-                                color: themeColors.inputText,
-                                borderColor: themeColors.inputBorder,
-                                borderWidth: 1
-                            }}
                             onChangeText={setAmount}
+                            placeholder='10000'
+                            keyboardType='number-pad'
+                            width='full'
+                            showCurrency={true}
+                            withShadow={true}
                         />
                     </View>
 
@@ -218,20 +210,14 @@ export default function GSTCalculator() {
 
                     {/* Custom GST Rate Input */}
                     <View style={{ marginVertical: 10 }}>
-                        <TextInputTitle text="Custom GST Rate (%)" />
-                        <TextInput
-                            placeholder='18'
+                        <StyledInput
+                            label="Custom GST Rate (%)"
                             value={gstRate}
-                            placeholderTextColor={themeColors.inputPlaceholder}
-                            keyboardType='decimal-pad'
-                            style={{
-                                ...inputStyle.halfTextInput,
-                                backgroundColor: themeColors.inputBackground,
-                                color: themeColors.inputText,
-                                borderColor: themeColors.inputBorder,
-                                borderWidth: 1
-                            }}
                             onChangeText={setGstRate}
+                            placeholder='18'
+                            keyboardType='decimal-pad'
+                            width='half'
+                            withShadow={true}
                         />
                     </View>
 
