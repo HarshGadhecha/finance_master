@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, ScrollView, TextInput, TouchableOpacity, useColorScheme, Platform } from 'react-native';
-import { BackButton, CalculateButton, ResetButton, TextInputTitle, feedbackOptions, CURRENCY_OPTIONS, selectedCurrencyIndex, DecimalIn2, CalculationText } from '../../constants/ReUsableComponents';
+import { BackButton, CalculateButton, ResetButton, TextInputTitle, StyledInput, feedbackOptions, CURRENCY_OPTIONS, selectedCurrencyIndex, DecimalIn2, CalculationText } from '../../constants/ReUsableComponents';
 import { height, width, inputStyle, MM, MS } from '../../constants/Layout';
 import Colors, { ChartColors } from '../../constants/Colors';
 import PieChart from '../Pie';
@@ -125,58 +125,41 @@ export default function SIPCalculator() {
 
                     {/* Monthly Investment Input */}
                     <View style={{ marginVertical: 10 }}>
-                        <TextInputTitle text="Monthly Investment" c={'(' + CURRENCY_OPTIONS[selectedCurrencyIndex].symbol + ')'} />
-                        <TextInput
-                            placeholder='5000'
+                        <StyledInput
+                            label="Monthly Investment"
                             value={monthlyInvestment}
-                            placeholderTextColor={themeColors.inputPlaceholder}
-                            keyboardType='number-pad'
-                            style={{
-                                ...inputStyle.fullTextInput,
-                                backgroundColor: themeColors.inputBackground,
-                                color: themeColors.inputText,
-                                borderColor: themeColors.inputBorder,
-                                borderWidth: 1
-                            }}
                             onChangeText={setMonthlyInvestment}
+                            placeholder='5000'
+                            keyboardType='number-pad'
+                            width='full'
+                            showCurrency={true}
+                            withShadow={true}
                         />
                     </View>
 
                     {/* Expected Return Input */}
                     <View style={{ marginVertical: 10 }}>
-                        <TextInputTitle text="Expected Annual Return (%)" />
-                        <TextInput
-                            placeholder='12'
+                        <StyledInput
+                            label="Expected Annual Return (%)"
                             value={expectedReturn}
-                            placeholderTextColor={themeColors.inputPlaceholder}
-                            keyboardType='decimal-pad'
-                            style={{
-                                ...inputStyle.halfTextInput,
-                                backgroundColor: themeColors.inputBackground,
-                                color: themeColors.inputText,
-                                borderColor: themeColors.inputBorder,
-                                borderWidth: 1
-                            }}
                             onChangeText={setExpectedReturn}
+                            placeholder='12'
+                            keyboardType='decimal-pad'
+                            width='half'
+                            withShadow={true}
                         />
                     </View>
 
                     {/* Time Period Input */}
                     <View style={{ marginVertical: 10 }}>
-                        <TextInputTitle text={`Time Period (${timeUnit})`} />
-                        <TextInput
-                            placeholder='10'
+                        <StyledInput
+                            label={`Time Period (${timeUnit})`}
                             value={timePeriod}
-                            placeholderTextColor={themeColors.inputPlaceholder}
-                            keyboardType='number-pad'
-                            style={{
-                                ...inputStyle.halfTextInput,
-                                backgroundColor: themeColors.inputBackground,
-                                color: themeColors.inputText,
-                                borderColor: themeColors.inputBorder,
-                                borderWidth: 1
-                            }}
                             onChangeText={setTimePeriod}
+                            placeholder='10'
+                            keyboardType='number-pad'
+                            width='half'
+                            withShadow={true}
                         />
                     </View>
 
