@@ -27,12 +27,8 @@ import { MortgagePayment } from '../screens/2.Loan/MortgagePayment';
 
 // Finance Calculators
 import { DTI } from '../screens/3.Finance/DTI';
-import { DCF } from '../screens/3.Finance/DCF';
 import { PV } from '../screens/3.Finance/PV';
 import { FV } from '../screens/3.Finance/FV';
-import { NPV } from '../screens/3.Finance/NPV';
-import { IRR } from '../screens/3.Finance/IRR';
-import { BY } from '../screens/3.Finance/BondYeild';
 
 // Investment Calculators
 import SIPCalculator from '../screens/4.Investment/SIPCalculator';
@@ -97,12 +93,8 @@ function RootNavigator() {
 
       {/* Finance Calculators */}
       <Stack.Screen name="DTI" component={DTI} />
-      <Stack.Screen name="DCF" component={DCF} />
       <Stack.Screen name="PV" component={PV} />
       <Stack.Screen name="FV" component={FV} />
-      <Stack.Screen name="NPV" component={NPV} />
-      <Stack.Screen name="IRR" component={IRR} />
-      <Stack.Screen name="BY" component={BY} />
     </Stack.Navigator>
   );
 }
