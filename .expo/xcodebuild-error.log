@@ -1,7 +1,0 @@
-** BUILD FAILED **
-
-
-The following build commands failed:
-	CompileC /Users/harsh/Library/Developer/Xcode/DerivedData/FinanceMaster-arxauhmwabyfqgbyjhqgberwkbqu/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/RNScreens.build/Objects-normal/arm64/RNSScreenNavigationContainer.o /Users/harsh/Desktop/Matrix_Developer/Finance_Master/node_modules/react-native-screens/ios/RNSScreenNavigationContainer.mm normal arm64 objective-c++ com.apple.compilers.llvm.clang.1_0.compiler (in target 'RNScreens' from project 'Pods')
-	Building workspace FinanceMaster with scheme FinanceMaster and configuration Debug
-(2 failures)

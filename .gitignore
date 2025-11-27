@@ -6,7 +6,8 @@ node_modules/
 /interest_KEY_Store.jks
 # testing
 /coverage
-
+/ios
+/android
 # production
 /build
 
