@@ -12,16 +12,20 @@ import { ColorSchemeName, Platform } from 'react-native';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+
+// Interest Calculators
 import { AmortisationCalculator } from '../screens/2.Loan/AmortizationSchedule';
 import { SimpleInterest } from '../screens/1.Interest/simpleInterest';
 import { CompoundInterest } from '../screens/1.Interest/compoundInterest';
 import { RecurringDeposit } from '../screens/1.Interest/RecurringDeposit';
-import { HomePage } from '../screens/Home';
+import { CreditCardInterest } from '../screens/1.Interest/CreditCardInterest';
+
+// Loan Calculators
 import { LoanCalculator } from '../screens/2.Loan/LoanCalculator';
 import { LoanToValueRatio } from '../screens/2.Loan/LoanToValue';
-import { RootStackParamList, RootTabParamList } from '../types';
-import { CreditCardInterest } from '../screens/1.Interest/CreditCardInterest';
 import { MortgagePayment } from '../screens/2.Loan/MortgagePayment';
+
+// Finance Calculators
 import { DTI } from '../screens/3.Finance/DTI';
 import { DCF } from '../screens/3.Finance/DCF';
 import { PV } from '../screens/3.Finance/PV';
@@ -29,6 +33,21 @@ import { FV } from '../screens/3.Finance/FV';
 import { NPV } from '../screens/3.Finance/NPV';
 import { IRR } from '../screens/3.Finance/IRR';
 import { BY } from '../screens/3.Finance/BondYeild';
+
+// Investment Calculators
+import SIPCalculator from '../screens/4.Investment/SIPCalculator';
+import LumpsumInvestment from '../screens/4.Investment/LumpsumInvestment';
+
+// Tax Calculators
+import GSTCalculator from '../screens/5.Tax/GSTCalculator';
+import IncomeTaxCalculator from '../screens/5.Tax/IncomeTaxCalculator';
+
+// Planning Calculators
+import RetirementPlanner from '../screens/7.Planning/RetirementPlanner';
+
+// Other
+import { HomePage } from '../screens/Home';
+import { RootStackParamList, RootTabParamList } from '../types';
 import { StatusBar } from 'expo-status-bar';
 
 export default function Navigation({ colorScheme }) {
@@ -52,14 +71,31 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomePage} options={{ headerShown: false }} />
       <Stack.Screen name="Root" component={BottomTabNavigator} options={{ headerShown: false }} />
+
+      {/* Interest Calculators */}
       <Stack.Screen name="SimpleInterest" component={SimpleInterest} />
       <Stack.Screen name="RecurringDeposit" component={RecurringDeposit} />
       <Stack.Screen name="CompoundInterest" component={CompoundInterest} />
       <Stack.Screen name="CreditCardInterest" component={CreditCardInterest} />
+
+      {/* Loan Calculators */}
       <Stack.Screen name="LoanPayment" component={LoanCalculator} />
       <Stack.Screen name="AmortisationCalculator" component={AmortisationCalculator} />
       <Stack.Screen name="LoanToValueRatio" component={LoanToValueRatio} />
       <Stack.Screen name="MortgagePayment" component={MortgagePayment} />
+
+      {/* Investment Calculators */}
+      <Stack.Screen name="SIPCalculator" component={SIPCalculator} />
+      <Stack.Screen name="LumpsumInvestment" component={LumpsumInvestment} />
+
+      {/* Tax Calculators */}
+      <Stack.Screen name="IncomeTaxCalculator" component={IncomeTaxCalculator} />
+      <Stack.Screen name="GSTCalculator" component={GSTCalculator} />
+
+      {/* Planning Calculators */}
+      <Stack.Screen name="RetirementPlanner" component={RetirementPlanner} />
+
+      {/* Finance Calculators */}
       <Stack.Screen name="DTI" component={DTI} />
       <Stack.Screen name="DCF" component={DCF} />
       <Stack.Screen name="PV" component={PV} />
