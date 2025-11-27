@@ -67,7 +67,7 @@ export const SimpleInterest = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{ backgroundColor: themeColors.background, flex: 1 }} edges={['top']}>
-      <StatusBar style='dark' />
+       
       <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
           <View style={{ flex: 1 }}>

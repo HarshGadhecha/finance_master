@@ -50,7 +50,7 @@ export default function Navigation({ colorScheme }) {
   return (
     <NavigationContainer
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <StatusBar style='dark' />
+      <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
       <RootNavigator />
     </NavigationContainer>
   );

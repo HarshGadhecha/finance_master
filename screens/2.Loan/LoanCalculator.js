@@ -45,7 +45,7 @@ export const LoanCalculator = () => {
 
   return (
     <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
-      <StatusBar style='dark' />
+       
       <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
         <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
           <View>

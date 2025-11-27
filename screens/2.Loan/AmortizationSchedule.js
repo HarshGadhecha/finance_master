@@ -66,7 +66,7 @@ export const AmortisationCalculator = () => {
     return (
         <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
 
-            <StatusBar style='dark' />
+             
             <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
                 <FlatList
                     showsVerticalScrollIndicator={false}

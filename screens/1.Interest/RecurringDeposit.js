@@ -66,7 +66,7 @@ export const RecurringDeposit = () => {
 
     return (
         <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
-            <StatusBar style='dark' />
+             
 
             <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
                 <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
