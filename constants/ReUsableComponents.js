@@ -365,15 +365,51 @@ export const getCurrencyIndex = async () => {
     console.log(selectedCurrencyIndex[0]);
 }
 
-export const CustomButton = ({ title, onPress, size, margin, color, image }) => {
+export const CustomButton = ({ title, onPress, color, image }) => {
+    const CARD_WIDTH = 160;
+    const CARD_HEIGHT = 180;
+
     return (
         <TouchableOpacity onPress={() => {
             HapticFeedback.trigger('impactLight', feedbackOptions);
             onPress()
-        }} style={{ borderRadius: 25, height: size == 'large' ? 250 : 220, width: width / 2 - 35, margin: 10, marginTop: margin, alignItems: 'center', backgroundColor: color }}>
-            <ImageBackground source={image} style={{ height: size == 'large' ? 250 : 220, width: width / 2 - 35, justifyContent: 'flex-end', alignItems: 'center' }} borderRadius={25} resizeMode={'contain'} >
-                <View style={{ padding: 5, borderBottomEndRadius: 25, borderBottomStartRadius: 25, backgroundColor: 'rgba(0,0,0,0.15)', width: width / 2 - 35 }}>
-                    <Text style={{ color: 'white', fontSize: 16, textAlign: 'center', fontFamily: MS }} >{title}</Text>
+        }} style={{
+            borderRadius: 20,
+            height: CARD_HEIGHT,
+            width: CARD_WIDTH,
+            marginRight: 15,
+            alignItems: 'center',
+            backgroundColor: color,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.15,
+            shadowRadius: 4,
+            elevation: 4,
+        }}>
+            <ImageBackground
+                source={image}
+                style={{
+                    height: CARD_HEIGHT,
+                    width: CARD_WIDTH,
+                    justifyContent: 'flex-end',
+                    alignItems: 'center'
+                }}
+                borderRadius={20}
+                resizeMode={'contain'}
+            >
+                <View style={{
+                    padding: 8,
+                    borderBottomEndRadius: 20,
+                    borderBottomStartRadius: 20,
+                    backgroundColor: 'rgba(0,0,0,0.2)',
+                    width: CARD_WIDTH
+                }}>
+                    <Text style={{
+                        color: 'white',
+                        fontSize: 14,
+                        textAlign: 'center',
+                        fontFamily: MS
+                    }}>{title}</Text>
                 </View>
             </ImageBackground>
         </TouchableOpacity>

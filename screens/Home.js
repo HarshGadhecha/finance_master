@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, useColorScheme, SafeAreaView } from 'react-native';
-import { MM, MS, width } from '../constants/Layout';
+import { View, Text, StyleSheet, ScrollView, useColorScheme, Platform, StatusBar } from 'react-native';
+import { MM, MS } from '../constants/Layout';
 import { calculations, CustomButton, getCurrencyIndex } from '../constants/ReUsableComponents';
 import CurrencySelector from './CurrencySelector';
 import Colors from '../constants/Colors';
@@ -12,45 +12,47 @@ export const HomePage = ({ navigation }) => {
     getCurrencyIndex();
 
     const CategorySection = ({ category, data }) => (
-        <View style={{ marginBottom: 30 }}>
+        <View style={{ marginBottom: 25 }}>
             <Text style={{
                 fontSize: 18,
                 fontFamily: MM,
                 color: themeColors.text,
-                marginBottom: 15,
-                marginLeft: 10,
+                marginBottom: 12,
+                marginLeft: 15,
                 fontWeight: 'bold'
             }}>
                 {category}
             </Text>
-            <View style={{
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                justifyContent: 'space-between'
-            }}>
+            <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{ paddingLeft: 15, paddingRight: 5 }}
+            >
                 {data.map((item, index) => (
                     <CustomButton
                         key={index}
                         title={item.title}
                         image={item.image}
                         onPress={() => navigation.navigate(item.onPress)}
-                        size={item.size}
-                        margin={item.margin}
                         color={item.color}
                     />
                 ))}
-            </View>
+            </ScrollView>
         </View>
     );
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.background }}>
+        <View style={{
+            flex: 1,
+            backgroundColor: themeColors.background,
+            paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
+        }}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 {/* Header */}
                 <View style={{
                     paddingHorizontal: 20,
-                    paddingTop: 20,
-                    paddingBottom: 25,
+                    paddingTop: 15,
+                    paddingBottom: 20,
                     backgroundColor: themeColors.primary,
                 }}>
                     <View style={{
@@ -59,7 +61,7 @@ export const HomePage = ({ navigation }) => {
                         alignItems: 'center',
                     }}>
                         <Text style={{
-                            fontSize: 28,
+                            fontSize: 26,
                             color: colorScheme === 'dark' ? '#000' : '#fff',
                             fontFamily: MM,
                             fontWeight: 'bold'
@@ -71,7 +73,7 @@ export const HomePage = ({ navigation }) => {
                 </View>
 
                 {/* Calculator Sections */}
-                <View style={{ paddingHorizontal: 10, paddingTop: 25, paddingBottom: 30 }}>
+                <View style={{ paddingTop: 20, paddingBottom: 30 }}>
                     {calculations.map((calc, index) => (
                         <CategorySection
                             key={index}
@@ -81,7 +83,7 @@ export const HomePage = ({ navigation }) => {
                     ))}
                 </View>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 };
 
