@@ -1,15 +1,19 @@
 import { AntDesign, Entypo, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useRef, useState } from 'react';
-import { View, Text, Button, Keyboard, TouchableWithoutFeedback, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, ScrollView } from 'react-native';
+import { View, Text, Button, Keyboard, TouchableWithoutFeedback, StyleSheet, TouchableOpacity, TextInput, ScrollView, useColorScheme } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { ButtonColor, HeadingColor, height, inputStyle, TextInputBackground, width } from '../../constants/Layout';
 import { BackButton, Bold, CalculateButton, CalculationText, entering, exiting, InputInterest, InputPrincipal, InterestText, MixText, PieChartComponent, PieText, ResetButton, SimpleText, TextInputTitle, TextInputTitleResult, YearText } from '../../constants/ReUsableComponents';
 import { AdBanner, LoadInterstitial, LoadRewardedInterstitial, ShowInterstitial, ShowRewardedInterstitial, interstitial, rewardedInterstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const FV = ({ navigation }) => {
+  const colorScheme = useColorScheme();
+  const themeColors = Colors[colorScheme ?? 'light'];
+
   LoadInterstitial();
   LoadRewardedInterstitial();
   const [presentValue, setPresentValue] = useState();
@@ -40,7 +44,7 @@ export const FV = ({ navigation }) => {
   }
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+    <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
       <StatusBar style='dark' />
       <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -84,6 +88,6 @@ export const FV = ({ navigation }) => {
         </TouchableWithoutFeedback >
       </ScrollView>
       <AdBanner />
-    </SafeAreaView>
+    </View>
   );
 }

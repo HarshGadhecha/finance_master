@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { Text, ScrollView, Keyboard, TouchableWithoutFeedback, StyleSheet, View, SafeAreaView } from 'react-native';
+import { Text, ScrollView, Keyboard, TouchableWithoutFeedback, StyleSheet, View, useColorScheme } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { HeadingColor, height, TextInputBackground } from '../../constants/Layout';
 import { BackButton, CalculateButton, CalculationText, DecimalIn2, entering, exiting, InputPrincipal, PieChartComponent, ResetButton, ScreenTitle, SimpleText, YearText } from '../../constants/ReUsableComponents';
 import { AdBanner, LoadInterstitial, LoadRewardedInterstitial, ShowInterstitial, ShowRewardedInterstitial, interstitial, rewardedInterstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const DTI = ({ navigation }) => {
+    const colorScheme = useColorScheme();
+    const themeColors = Colors[colorScheme ?? 'light'];
+
     LoadInterstitial();
     LoadRewardedInterstitial();
 
@@ -33,7 +37,7 @@ export const DTI = ({ navigation }) => {
     };
 
     return (
-        <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+        <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
       <StatusBar style='dark' />
             <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
                 <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -65,6 +69,6 @@ export const DTI = ({ navigation }) => {
                 </TouchableWithoutFeedback>
             </ScrollView>
             <AdBanner />
-        </SafeAreaView>
+        </View>
     );
 }

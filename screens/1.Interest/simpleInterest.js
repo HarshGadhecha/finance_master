@@ -1,6 +1,6 @@
 import { Entypo } from '@expo/vector-icons';
 import React, { useRef, useState } from 'react';
-import { View, Text, Keyboard, TouchableWithoutFeedback, TouchableOpacity, SafeAreaView, TextInput, ScrollView } from 'react-native';
+import { View, Text, Keyboard, TouchableWithoutFeedback, TouchableOpacity, TextInput, ScrollView, useColorScheme } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { HeadingColor, height, inputStyle, MM, MS, TextInputBackground, width } from '../../constants/Layout';
 import { BackButton, CalculateButton, CalculationText, entering, exiting, formatNumber, InputInterest, InputPrincipal, InterestText, ResetButton, ScreenTitle, selectedCurrencyIndex, SimpleText, TextInputTitle, TextInputTitleResult, YearText } from '../../constants/ReUsableComponents';
@@ -8,8 +8,11 @@ import { SwitchButtonGroup } from '../SwitchButtonGroup';
 import { LoadInterstitial, LoadRewardedInterstitial, AdBanner, ShowRewardedInterstitial, ShowInterstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const SimpleInterest = ({ navigation }) => {
+  const colorScheme = useColorScheme();
+  const themeColors = Colors[colorScheme ?? 'light'];
 
   LoadInterstitial();
   LoadRewardedInterstitial();
@@ -62,7 +65,7 @@ export const SimpleInterest = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+    <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
       <StatusBar style='dark' />
       <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -122,6 +125,6 @@ export const SimpleInterest = ({ navigation }) => {
         </TouchableWithoutFeedback >
       </ScrollView>
       <AdBanner />
-    </SafeAreaView>
+    </View>
   );
 }

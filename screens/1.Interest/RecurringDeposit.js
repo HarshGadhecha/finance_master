@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { View, Text, Keyboard, TouchableWithoutFeedback, SafeAreaView, ScrollView } from 'react-native';
+import { View, Text, Keyboard, TouchableWithoutFeedback, ScrollView, useColorScheme } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { HeadingColor, height, MM, TextInputBackground } from '../../constants/Layout';
 import { BackButton, CalculateButton, CalculationText, entering, exiting, InputInterest, InputPrincipal, InterestText, PieChartComponent, ResetButton, ScreenTitle, SimpleText, YearText } from '../../constants/ReUsableComponents';
 import { LoadInterstitial, LoadRewardedInterstitial, interstitial, rewardedInterstitial, AdBanner, ShowRewardedInterstitial, ShowInterstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const RecurringDeposit = () => {
+    const colorScheme = useColorScheme();
+    const themeColors = Colors[colorScheme ?? 'light'];
+
     LoadInterstitial();
     LoadRewardedInterstitial();
 
@@ -61,7 +65,7 @@ export const RecurringDeposit = () => {
     }
 
     return (
-        <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+        <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
             <StatusBar style='dark' />
 
             <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
@@ -104,6 +108,6 @@ export const RecurringDeposit = () => {
                 </TouchableWithoutFeedback>
             </ScrollView>
             <AdBanner />
-        </SafeAreaView>
+        </View>
     );
 }

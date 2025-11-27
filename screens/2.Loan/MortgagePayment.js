@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Button, SafeAreaView, TouchableOpacity, Keyboard, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { View, TextInput, Text, Button, TouchableOpacity, Keyboard, TouchableWithoutFeedback, ScrollView, useColorScheme } from 'react-native';
 import { ButtonColor, HeadingColor, height, inputStyle, TextInputBackground, width } from '../../constants/Layout';
 import { BackButton, Bold, CalculateButton, entering, exiting, InputInterest, InputPrincipal, InterestText, PieChartComponent, PieText, ResetButton, ScreenTitle, SimpleText, TextInputTitle, TextInputTitleResult, YearText } from '../../constants/ReUsableComponents'
 import Animated from 'react-native-reanimated';
 import { AdBanner, LoadInterstitial, LoadRewardedInterstitial, ShowInterstitial, ShowRewardedInterstitial, interstitial, rewardedInterstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const MortgagePayment = () => {
+    const colorScheme = useColorScheme();
+    const themeColors = Colors[colorScheme ?? 'light'];
+
     LoadInterstitial();
     LoadRewardedInterstitial();
 
@@ -39,7 +43,7 @@ export const MortgagePayment = () => {
     }
 
     return (
-        <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+        <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
             <StatusBar style='dark' />
             <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
                 <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -80,7 +84,7 @@ export const MortgagePayment = () => {
                 </TouchableWithoutFeedback>
             </ScrollView>
             <AdBanner />
-        </SafeAreaView>
+        </View>
 
     )
 }

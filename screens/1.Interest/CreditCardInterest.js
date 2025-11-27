@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, SafeAreaView, ScrollView, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableWithoutFeedback, Keyboard, ScrollView, Alert, useColorScheme } from 'react-native';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
 import Animated from 'react-native-reanimated';
 import { HeadingColor, height, inputStyle, MM, MS, TextInputBackground } from '../../constants/Layout';
@@ -8,8 +8,12 @@ import { LoadInterstitial, LoadRewardedInterstitial, interstitial, rewardedInter
 import PieChart from '../Pie';
 import HapticFeedback from 'react-native-haptic-feedback';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const CreditCardInterest = () => {
+  const colorScheme = useColorScheme();
+  const themeColors = Colors[colorScheme ?? 'light'];
+
   LoadInterstitial();
   LoadRewardedInterstitial();
 
@@ -77,7 +81,7 @@ export const CreditCardInterest = () => {
   }
 
   return (
-    <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+    <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
       <StatusBar style='dark' />
 
       <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -162,7 +166,7 @@ export const CreditCardInterest = () => {
         </ScrollView>
       </TouchableWithoutFeedback>
       <AdBanner />
-    </SafeAreaView>
+    </View>
   );
 }
 const styles = StyleSheet.create({

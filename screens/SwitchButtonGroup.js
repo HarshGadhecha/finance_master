@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { MS, width } from '../constants/Layout';
 import { useAnimatedStyle, withSpring,useSharedValue, interpolate } from 'react-native-reanimated';
 import HapticFeedback from 'react-native-haptic-feedback';
 import { feedbackOptions } from '../constants/ReUsableComponents';
+import Colors from '../constants/Colors';
 
 
 const SwitchButton = ({ option, activeOption, onPress, widthOption }) => {
+  const colorScheme = useColorScheme();
+  const themeColors = Colors[colorScheme ?? 'light'];
   const isActive = option === activeOption;
 
   const scaleValue = useSharedValue(1);
@@ -30,18 +33,26 @@ const SwitchButton = ({ option, activeOption, onPress, widthOption }) => {
 
 
   return (
-    <View style={{ backgroundColor: 'white' }}>
+    <View>
       <TouchableOpacity
         onPress={() => onPress(option)}
         onPressIn={onPressIn}
         onPressOut={onPressOut}
         style={{
-          backgroundColor: isActive ? '#2196F3' : 'white', 
+          backgroundColor: isActive ? themeColors.primary : themeColors.cardBackground,
           borderRadius: isActive ? 5 : 0, paddingVertical: 4,
-          borderColor: isActive ? '#2196F3' : 'lightgrey', width: widthOption,
+          borderColor: isActive ? themeColors.primary : themeColors.cardBorder,
+          borderWidth: 1,
+          width: widthOption,
           marginVertical:5
         }}>
-        <Text style={{ color: isActive ? '#FFFFFF' : 'lightgrey', fontSize: 12, textAlign: 'center',fontFamily:MS, textTransform:'uppercase' }}>
+        <Text style={{
+          color: isActive ? (colorScheme === 'dark' ? '#000' : '#fff') : themeColors.textSecondary,
+          fontSize: 12,
+          textAlign: 'center',
+          fontFamily:MS,
+          textTransform:'uppercase'
+        }}>
           {option}
         </Text>
       </TouchableOpacity>

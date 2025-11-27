@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Button, Text, TextInput, SafeAreaView, TouchableWithoutFeedback, FlatList, Keyboard, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Button, Text, TextInput, TouchableWithoutFeedback, FlatList, Keyboard, TouchableOpacity, StyleSheet, ScrollView, useColorScheme } from 'react-native';
 import { ButtonColor, HeadingColor, height, inputStyle, TextInputBackground, width } from '../../constants/Layout';
 import { BackButton, CalculateButton, CalculationText, DecimalIn2, entering, exiting, formatNumber, InputInterest, InputPrincipal, InterestText, PieChartComponent, ResetButton, SimpleText, TextInputTitle, TextInputTitleResult, YearText } from '../../constants/ReUsableComponents';
 import { Table, Row, Rows } from 'react-native-table-component';
@@ -7,8 +7,12 @@ import Animated from 'react-native-reanimated';
 import { AdBanner, LoadInterstitial, LoadRewardedInterstitial, ShowInterstitial, ShowRewardedInterstitial, interstitial, rewardedInterstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const AmortisationCalculator = () => {
+    const colorScheme = useColorScheme();
+    const themeColors = Colors[colorScheme ?? 'light'];
+
     LoadRewardedInterstitial();
     LoadInterstitial();
 
@@ -60,7 +64,7 @@ export const AmortisationCalculator = () => {
     };
 
     return (
-        <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+        <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
 
             <StatusBar style='dark' />
             <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -134,7 +138,7 @@ export const AmortisationCalculator = () => {
 
             </TouchableWithoutFeedback>
             <AdBanner />
-        </SafeAreaView >
+        </View>
     );
 };
 

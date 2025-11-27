@@ -47,32 +47,36 @@ export const HomePage = ({ navigation }) => {
             backgroundColor: themeColors.background,
             paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0
         }}>
-            <ScrollView showsVerticalScrollIndicator={false}>
-                {/* Header */}
+            {/* Fixed Header */}
+            <View style={{
+                paddingHorizontal: 20,
+                paddingTop: 15,
+                paddingBottom: 20,
+                backgroundColor: themeColors.primary,
+            }}>
                 <View style={{
-                    paddingHorizontal: 20,
-                    paddingTop: 15,
-                    paddingBottom: 20,
-                    backgroundColor: themeColors.primary,
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginTop: 30
                 }}>
-                    <View style={{
-                        flexDirection: 'row',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
+                    <Text style={{
+                        fontSize: 26,
+                        color: colorScheme === 'dark' ? '#000' : '#fff',
+                        fontFamily: MM,
+                        fontWeight: 'bold'
                     }}>
-                        <Text style={{
-                            fontSize: 26,
-                            color: colorScheme === 'dark' ? '#000' : '#fff',
-                            fontFamily: MM,
-                            fontWeight: 'bold'
-                        }}>
-                            Finance Master
-                        </Text>
-                        <CurrencySelector />
-                    </View>
+                        Finance Master
+                    </Text>
+                    <CurrencySelector />
                 </View>
+            </View>
 
-                {/* Calculator Sections */}
+            {/* Scrollable Content */}
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                style={{ flex: 1 }}
+            >
                 <View style={{ paddingTop: 20, paddingBottom: 30 }}>
                     {calculations.map((calc, index) => (
                         <CategorySection

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, SafeAreaView, TextInput, TouchableOpacity, useColorScheme, Platform } from 'react-native';
+import { View, Text, ScrollView, TextInput, TouchableOpacity, useColorScheme, Platform } from 'react-native';
 import { BackButton, CalculateButton, ResetButton, TextInputTitle, feedbackOptions, CURRENCY_OPTIONS, selectedCurrencyIndex, DecimalIn2, CalculationText } from '../../constants/ReUsableComponents';
 import { height, width, inputStyle, MM, MS } from '../../constants/Layout';
 import Colors, { ChartColors } from '../../constants/Colors';
@@ -97,7 +97,7 @@ export default function SIPCalculator() {
     );
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.background }}>
+        <View style={{ flex: 1, backgroundColor: themeColors.background }}>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={{ paddingHorizontal: 20, paddingTop: Platform.OS === 'ios' ? 0 : 20 }}>
                     <BackButton />
@@ -270,6 +270,6 @@ export default function SIPCalculator() {
             <View style={{ position: 'absolute', bottom: 0, width: width }}>
                 <AdBanner />
             </View>
-        </SafeAreaView>
+        </View>
     );
 }

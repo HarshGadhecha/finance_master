@@ -1,7 +1,7 @@
 import { AntDesign, Entypo } from '@expo/vector-icons';
 import React, { useRef, useState } from 'react';
-import { View, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView, FlatList } from 'react-native';
-import { ButtonColor, HeadingColor, height, inputStyle, MM, MR, MS, TextInputBackground, width } from '../../constants/Layout';
+import { View, Text, TextInput, Button, TouchableWithoutFeedback, Keyboard, ScrollView, StyleSheet, TouchableOpacity, FlatList, useColorScheme } from 'react-native';
+import { ButtonColor, HeadingColor, height, inputStyle, MM, MR, MS, width } from '../../constants/Layout';
 import { BackButton, Bold, CalculateButton, CalculationText, DecimalIn2, entering, exiting, InputInterest, InputPrincipal, InterestText, PieChartComponent, PieText, ResetButton, ScreenTitle, SimpleText, TextInputTitle, TextInputTitleResult, YearText } from '../../constants/ReUsableComponents';
 import { Table, Row, Rows, TableWrapper } from 'react-native-table-component';
 import Animated from 'react-native-reanimated';
@@ -9,8 +9,11 @@ import { SwitchButtonGroup } from '../SwitchButtonGroup';
 import { AdBanner, LoadInterstitial, LoadRewardedInterstitial, ShowInterstitial, ShowRewardedInterstitial, interstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
+import Colors from '../../constants/Colors';
 
 export const CompoundInterest = () => {
+    const colorScheme = useColorScheme();
+    const themeColors = Colors[colorScheme ?? 'light'];
 
     LoadInterstitial();
     LoadRewardedInterstitial();
@@ -174,7 +177,7 @@ export const CompoundInterest = () => {
     };
 
     return (
-        <SafeAreaView style={{ backgroundColor: 'white', flex: 1 }}>
+        <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
             <StatusBar style='dark' />
             <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
                 <FlatList
@@ -239,7 +242,7 @@ export const CompoundInterest = () => {
                                         <CalculationText />
                                         <PieChart interest={endBalance - principal} principal={principal} />
 
-                                        <View style={{ backgroundColor: TextInputBackground, padding: 15, borderRadius: 15 }}>
+                                        <View style={{ backgroundColor: themeColors.cardBackground, padding: 15, borderRadius: 15 }}>
                                             <SimpleText text={'PRINCIPAL AMOUNT :'} value={principal} background={true} />
                                             <InterestText text={'INTEREST RATE :'} value={rate} background={false} />
                                             <YearText text={term == 'Y' ? 'YEARS :' : term == 'M' ? 'Months :' : 'Days :'} value={years} background={true} />
@@ -284,7 +287,7 @@ export const CompoundInterest = () => {
                 />
             </TouchableWithoutFeedback>
             <AdBanner />
-        </SafeAreaView >
+        </View>
     );
 }
 
