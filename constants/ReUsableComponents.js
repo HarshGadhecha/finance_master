@@ -246,8 +246,6 @@ export const calculations = [
             { title: "Amortization \nSchedule", onPress: 'AmortisationCalculator', size: 'small', margin: 0, color: '#41d5e2', image: require('../assets/images/extra/l2.png') },
             { title: "Mortgage \nPayment", onPress: 'MortgagePayment', size: 'small', margin: 0, color: '#fec505', image: require('../assets/images/extra/l3.png') },
             { title: "Loan To Value \nRatio", onPress: 'LoanToValueRatio', size: 'large', margin: -30, color: '#ff5668', image: require('../assets/images/extra/l4.png') },
-            { title: "Car Loan \nEMI", onPress: 'CarLoanEMI', size: 'small', margin: 0, color: '#4d54e1', image: require('../assets/images/extra/l1.png') },
-            { title: "Home \nAffordability", onPress: 'HomeAffordability', size: 'small', margin: 0, color: '#41d5e2', image: require('../assets/images/extra/l2.png') },
         ]
     },
     {
@@ -256,8 +254,6 @@ export const calculations = [
         data: [
             { title: "SIP \nCalculator", onPress: 'SIPCalculator', size: 'large', margin: 0, color: '#41d9a1', image: require('../assets/images/extra/f3.png') },
             { title: "Lumpsum \nInvestment", onPress: 'LumpsumInvestment', size: 'small', margin: 0, color: '#4d54e1', image: require('../assets/images/extra/f4.png') },
-            { title: "SWP \nCalculator", onPress: 'SWPCalculator', size: 'small', margin: 0, color: '#fec505', image: require('../assets/images/extra/f1.png') },
-            { title: "CAGR \nCalculator", onPress: 'CAGRCalculator', size: 'large', margin: -30, color: '#ff5668', image: require('../assets/images/extra/f2.png') },
         ]
     },
     {
@@ -266,18 +262,6 @@ export const calculations = [
         data: [
             { title: "Income Tax \nCalculator", onPress: 'IncomeTaxCalculator', size: 'large', margin: 0, color: '#ff5668', image: require('../assets/images/extra/f1.png') },
             { title: "GST \nCalculator", onPress: 'GSTCalculator', size: 'small', margin: 0, color: '#fec505', image: require('../assets/images/extra/f2.png') },
-            { title: "HRA \nCalculator", onPress: 'HRACalculator', size: 'small', margin: 0, color: '#41d5e2', image: require('../assets/images/extra/f3.png') },
-            { title: "Capital Gains \nTax", onPress: 'CapitalGainsTax', size: 'large', margin: -30, color: '#4d54e1', image: require('../assets/images/extra/f4.png') },
-        ]
-    },
-    {
-        category: "Business",
-        icon: "briefcase",
-        data: [
-            { title: "Profit Margin \nCalculator", onPress: 'ProfitMargin', size: 'large', margin: 0, color: '#4d54e1', image: require('../assets/images/extra/f1.png') },
-            { title: "ROI \nCalculator", onPress: 'ROICalculator', size: 'small', margin: 0, color: '#41d9a1', image: require('../assets/images/extra/f2.png') },
-            { title: "Break-even \nPoint", onPress: 'BreakEven', size: 'small', margin: 0, color: '#ff5668', image: require('../assets/images/extra/f3.png') },
-            { title: "Discount \nCalculator", onPress: 'DiscountCalculator', size: 'large', margin: -30, color: '#fec505', image: require('../assets/images/extra/f4.png') },
         ]
     },
     {
@@ -285,19 +269,6 @@ export const calculations = [
         icon: "target",
         data: [
             { title: "Retirement \nPlanner", onPress: 'RetirementPlanner', size: 'large', margin: 0, color: '#41d5e2', image: require('../assets/images/extra/f1.png') },
-            { title: "Education \nPlanner", onPress: 'EducationPlanner', size: 'small', margin: 0, color: '#4d54e1', image: require('../assets/images/extra/f2.png') },
-            { title: "Emergency \nFund", onPress: 'EmergencyFund', size: 'small', margin: 0, color: '#fec505', image: require('../assets/images/extra/f3.png') },
-            { title: "Goal \nPlanner", onPress: 'GoalPlanner', size: 'large', margin: -30, color: '#ff5668', image: require('../assets/images/extra/f4.png') },
-        ]
-    },
-    {
-        category: "Real Estate",
-        icon: "home",
-        data: [
-            { title: "Rent vs \nBuy", onPress: 'RentVsBuy', size: 'large', margin: 0, color: '#fec505', image: require('../assets/images/extra/f1.png') },
-            { title: "Rental Yield \nCalculator", onPress: 'RentalYield', size: 'small', margin: 0, color: '#41d5e2', image: require('../assets/images/extra/f2.png') },
-            { title: "Property \nAppreciation", onPress: 'PropertyAppreciation', size: 'small', margin: 0, color: '#4d54e1', image: require('../assets/images/extra/f3.png') },
-            { title: "Stamp Duty \nCalculator", onPress: 'StampDuty', size: 'large', margin: -30, color: '#ff5668', image: require('../assets/images/extra/f4.png') },
         ]
     },
     {
@@ -328,8 +299,6 @@ export const seachArray = [
             { title: "Amortization Schedule Calculator", onPress: 'AmortisationCalculator' },
             { title: "Mortgage Payment Calculator", onPress: 'MortgagePayment' },
             { title: "Loan to Value Ratio Calculator", onPress: 'LoanToValueRatio' },
-            { title: "Car Loan EMI Calculator", onPress: 'CarLoanEMI' },
-            { title: "Home Affordability Calculator", onPress: 'HomeAffordability' },
         ]
     },
     {
@@ -337,8 +306,6 @@ export const seachArray = [
         data: [
             { title: "SIP Calculator", onPress: 'SIPCalculator' },
             { title: "Lumpsum Investment Calculator", onPress: 'LumpsumInvestment' },
-            { title: "SWP Calculator", onPress: 'SWPCalculator' },
-            { title: "CAGR Calculator", onPress: 'CAGRCalculator' },
         ]
     },
     {
@@ -346,35 +313,12 @@ export const seachArray = [
         data: [
             { title: "Income Tax Calculator", onPress: 'IncomeTaxCalculator' },
             { title: "GST Calculator", onPress: 'GSTCalculator' },
-            { title: "HRA Calculator", onPress: 'HRACalculator' },
-            { title: "Capital Gains Tax Calculator", onPress: 'CapitalGainsTax' },
-        ]
-    },
-    {
-        category: "Business",
-        data: [
-            { title: "Profit Margin Calculator", onPress: 'ProfitMargin' },
-            { title: "ROI Calculator", onPress: 'ROICalculator' },
-            { title: "Break-even Point Calculator", onPress: 'BreakEven' },
-            { title: "Discount Calculator", onPress: 'DiscountCalculator' },
         ]
     },
     {
         category: "Planning",
         data: [
             { title: "Retirement Planner", onPress: 'RetirementPlanner' },
-            { title: "Education Planner", onPress: 'EducationPlanner' },
-            { title: "Emergency Fund Calculator", onPress: 'EmergencyFund' },
-            { title: "Goal Planner", onPress: 'GoalPlanner' },
-        ]
-    },
-    {
-        category: "Real Estate",
-        data: [
-            { title: "Rent vs Buy Calculator", onPress: 'RentVsBuy' },
-            { title: "Rental Yield Calculator", onPress: 'RentalYield' },
-            { title: "Property Appreciation Calculator", onPress: 'PropertyAppreciation' },
-            { title: "Stamp Duty Calculator", onPress: 'StampDuty' },
         ]
     },
     {

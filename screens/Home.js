@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, FlatList, TextInput, Share, useColorScheme } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, FlatList, TextInput, Share, useColorScheme, SafeAreaView } from 'react-native';
 import Animated, { SlideInDown, SlideInRight, SlideOutDown, SlideOutLeft } from 'react-native-reanimated';
 import { ButtonColor, MM, MR, MS, height, width } from '../constants/Layout';
 import { calculations, CustomButton, feedbackOptions, getCurrencyIndex } from '../constants/ReUsableComponents';
@@ -117,68 +117,88 @@ Take control of your financial future with Finance Master!
     };
 
     return (
-        <FlatList
-            showsVerticalScrollIndicator={false}
-            ListHeaderComponent={
-                <View>
+        <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.background }}>
+            <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
+                {/* Header Section */}
+                <View style={{
+                    paddingHorizontal: 20,
+                    paddingTop: 20,
+                    paddingBottom: 30,
+                    backgroundColor: themeColors.primary,
+                    borderBottomLeftRadius: 30,
+                    borderBottomRightRadius: 30,
+                }}>
+                    {/* Top Bar */}
                     <View style={{
-                        paddingHorizontal: 20,
-                        paddingTop: 20,
-                        backgroundColor: themeColors.primary
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        marginBottom: 20
                     }}>
-                        <View style={{ width: width - 40 }}>
-                            <View style={{
-                                flexDirection: 'row',
-                                justifyContent: 'flex-end',
-                                alignItems: 'flex-end',
-                                marginTop: 10,
-                                alignContent: 'center'
-                            }}>
-                                <TouchableOpacity onPress={shareDetails} style={{ marginHorizontal: 5 }}>
-                                    <Feather
-                                        name='share'
-                                        size={24}
-                                        color={colorScheme === 'dark' ? '#000' : '#fff'}
-                                        style={{ padding: 10 }}
-                                    />
-                                </TouchableOpacity>
-                                <CurrencySelector />
-                            </View>
-                            <Text style={{
-                                fontSize: 26,
-                                color: colorScheme === 'dark' ? '#000' : '#fff',
-                                fontFamily: MM,
-                                marginTop: 10
-                            }}>
-                                Hey, what would{'\n'}you like to calculate{'\n'}today?
-                            </Text>
+                        <Text style={{
+                            fontSize: 24,
+                            color: colorScheme === 'dark' ? '#000' : '#fff',
+                            fontFamily: MM,
+                            fontWeight: 'bold'
+                        }}>
+                            Finance Master
+                        </Text>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <TouchableOpacity onPress={shareDetails} style={{ marginRight: 10 }}>
+                                <Feather
+                                    name='share-2'
+                                    size={22}
+                                    color={colorScheme === 'dark' ? '#000' : '#fff'}
+                                />
+                            </TouchableOpacity>
+                            <CurrencySelector />
                         </View>
-                        <SearchInput />
                     </View>
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{ paddingHorizontal: 20, marginTop: 10, backgroundColor: themeColors.background }}
-                    >
-                        {categories.map((category, index) => (
-                            <TabItem
-                                key={category}
-                                title={category}
-                                onPress={() => handleTabPress(index)}
-                                active={activeTab === index}
-                            />
-                        ))}
-                    </ScrollView>
+
+                    {/* Greeting */}
+                    <Text style={{
+                        fontSize: 16,
+                        color: colorScheme === 'dark' ? 'rgba(0,0,0,0.7)' : 'rgba(255,255,255,0.9)',
+                        fontFamily: MS,
+                        marginBottom: 15
+                    }}>
+                        What would you like to calculate today?
+                    </Text>
+
+                    {/* Search Bar */}
+                    <SearchInput />
                 </View>
-            }
-            data={calculations}
-            ListFooterComponent={() => (
-                <View style={[styles.contentContainer, { backgroundColor: themeColors.background }]}>
+
+                {/* Category Tabs */}
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={{
+                        paddingVertical: 20,
+                        backgroundColor: themeColors.background
+                    }}
+                    contentContainerStyle={{ paddingHorizontal: 15 }}
+                >
+                    {categories.map((category, index) => (
+                        <TabItem
+                            key={category}
+                            title={category}
+                            onPress={() => handleTabPress(index)}
+                            active={activeTab === index}
+                        />
+                    ))}
+                </ScrollView>
+
+                {/* Calculator Grid */}
+                <View style={{
+                    paddingHorizontal: 10,
+                    paddingBottom: 30,
+                    backgroundColor: themeColors.background
+                }}>
                     {content}
                 </View>
-            )}
-            style={{ backgroundColor: themeColors.background }}
-        />
+            </ScrollView>
+        </SafeAreaView>
     );
 };
 
@@ -187,17 +207,21 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     tabItem: {
-        padding: 10,
-        borderWidth: 1,
-        marginHorizontal: 10,
-        borderRadius: 15,
-        paddingHorizontal: 20,
+        paddingVertical: 12,
+        paddingHorizontal: 24,
+        marginHorizontal: 6,
+        borderRadius: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
     },
     tabTitle: {
-        fontSize: 12,
+        fontSize: 13,
         textAlign: 'center',
         fontFamily: MS,
-        textTransform: 'uppercase'
+        fontWeight: '600',
     },
     contentContainer: {
         justifyContent: 'center',

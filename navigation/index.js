@@ -47,7 +47,6 @@ import RetirementPlanner from '../screens/7.Planning/RetirementPlanner';
 
 // Other
 import { HomePage } from '../screens/Home';
-import { ComingSoon } from '../screens/ComingSoon';
 import { RootStackParamList, RootTabParamList } from '../types';
 import { StatusBar } from 'expo-status-bar';
 
@@ -84,38 +83,17 @@ function RootNavigator() {
       <Stack.Screen name="AmortisationCalculator" component={AmortisationCalculator} />
       <Stack.Screen name="LoanToValueRatio" component={LoanToValueRatio} />
       <Stack.Screen name="MortgagePayment" component={MortgagePayment} />
-      <Stack.Screen name="CarLoanEMI" component={ComingSoon} />
-      <Stack.Screen name="HomeAffordability" component={ComingSoon} />
 
       {/* Investment Calculators */}
       <Stack.Screen name="SIPCalculator" component={SIPCalculator} />
       <Stack.Screen name="LumpsumInvestment" component={LumpsumInvestment} />
-      <Stack.Screen name="SWPCalculator" component={ComingSoon} />
-      <Stack.Screen name="CAGRCalculator" component={ComingSoon} />
 
       {/* Tax Calculators */}
       <Stack.Screen name="IncomeTaxCalculator" component={IncomeTaxCalculator} />
       <Stack.Screen name="GSTCalculator" component={GSTCalculator} />
-      <Stack.Screen name="HRACalculator" component={ComingSoon} />
-      <Stack.Screen name="CapitalGainsTax" component={ComingSoon} />
-
-      {/* Business Calculators */}
-      <Stack.Screen name="ProfitMargin" component={ComingSoon} />
-      <Stack.Screen name="ROICalculator" component={ComingSoon} />
-      <Stack.Screen name="BreakEven" component={ComingSoon} />
-      <Stack.Screen name="DiscountCalculator" component={ComingSoon} />
 
       {/* Planning Calculators */}
       <Stack.Screen name="RetirementPlanner" component={RetirementPlanner} />
-      <Stack.Screen name="EducationPlanner" component={ComingSoon} />
-      <Stack.Screen name="EmergencyFund" component={ComingSoon} />
-      <Stack.Screen name="GoalPlanner" component={ComingSoon} />
-
-      {/* Real Estate Calculators */}
-      <Stack.Screen name="RentVsBuy" component={ComingSoon} />
-      <Stack.Screen name="RentalYield" component={ComingSoon} />
-      <Stack.Screen name="PropertyAppreciation" component={ComingSoon} />
-      <Stack.Screen name="StampDuty" component={ComingSoon} />
 
       {/* Finance Calculators */}
       <Stack.Screen name="DTI" component={DTI} />
