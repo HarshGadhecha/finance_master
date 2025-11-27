@@ -3,9 +3,10 @@ import { View, Text, ScrollView, TextInput, TouchableOpacity, useColorScheme, Pl
 import { BackButton, CalculateButton, ResetButton, TextInputTitle, feedbackOptions, CURRENCY_OPTIONS, selectedCurrencyIndex, DecimalIn2, CalculationText } from '../../constants/ReUsableComponents';
 import { height, width, inputStyle, MM, MS } from '../../constants/Layout';
 import Colors from '../../constants/Colors';
-import SwitchButtonGroup from '../SwitchButtonGroup';
+import SegmentControl from '../SegmentControl';
 import { AdBanner } from '../../constants/AdMob';
 import HapticFeedback from 'react-native-haptic-feedback';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function GSTCalculator() {
     const colorScheme = useColorScheme();
@@ -128,9 +129,9 @@ export default function GSTCalculator() {
     );
 
     return (
-        <View style={{ flex: 1, backgroundColor: themeColors.background }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.background }} edges={['top']}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{ paddingHorizontal: 20, paddingTop: Platform.OS === 'ios' ? 0 : 20 }}>
+                <View style={{ paddingHorizontal: 20 }}>
                     <BackButton />
 
                     <Text style={{
@@ -156,12 +157,11 @@ export default function GSTCalculator() {
                     {/* Calculation Type Selector */}
                     <View style={{ marginVertical: 15 }}>
                         <TextInputTitle text="Calculation Type" />
-                        <SwitchButtonGroup
-                            buttons={['Exclusive', 'Inclusive']}
+                        <SegmentControl
+                            values={['Exclusive', 'Inclusive']}
                             selectedIndex={calculationType === 'Exclusive' ? 0 : 1}
-                            onPress={(index) => {
+                            onChange={(index) => {
                                 setCalculationType(index === 0 ? 'Exclusive' : 'Inclusive');
-                                HapticFeedback.trigger('impactLight', feedbackOptions);
                             }}
                         />
                         <Text style={{
@@ -312,6 +312,6 @@ export default function GSTCalculator() {
             <View style={{ position: 'absolute', bottom: 0, width: width }}>
                 <AdBanner />
             </View>
-        </View>
+        </SafeAreaView>
     );
 }

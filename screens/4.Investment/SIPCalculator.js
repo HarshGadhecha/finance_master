@@ -4,9 +4,10 @@ import { BackButton, CalculateButton, ResetButton, TextInputTitle, feedbackOptio
 import { height, width, inputStyle, MM, MS } from '../../constants/Layout';
 import Colors, { ChartColors } from '../../constants/Colors';
 import PieChart from '../Pie';
-import SwitchButtonGroup from '../SwitchButtonGroup';
+import SegmentControl from '../SegmentControl';
 import { AdBanner } from '../../constants/AdMob';
 import HapticFeedback from 'react-native-haptic-feedback';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SIPCalculator() {
     const colorScheme = useColorScheme();
@@ -97,9 +98,9 @@ export default function SIPCalculator() {
     );
 
     return (
-        <View style={{ flex: 1, backgroundColor: themeColors.background }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.background }} edges={['top']}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <View style={{ paddingHorizontal: 20, paddingTop: Platform.OS === 'ios' ? 0 : 20 }}>
+                <View style={{ paddingHorizontal: 20 }}>
                     <BackButton />
 
                     <Text style={{
@@ -181,12 +182,11 @@ export default function SIPCalculator() {
 
                     {/* Time Unit Selector */}
                     <View style={{ marginVertical: 10 }}>
-                        <SwitchButtonGroup
-                            buttons={['Years', 'Months']}
+                        <SegmentControl
+                            values={['Years', 'Months']}
                             selectedIndex={timeUnit === 'Years' ? 0 : 1}
-                            onPress={(index) => {
+                            onChange={(index) => {
                                 setTimeUnit(index === 0 ? 'Years' : 'Months');
-                                HapticFeedback.trigger('impactLight', feedbackOptions);
                             }}
                         />
                     </View>
@@ -270,6 +270,6 @@ export default function SIPCalculator() {
             <View style={{ position: 'absolute', bottom: 0, width: width }}>
                 <AdBanner />
             </View>
-        </View>
+        </SafeAreaView>
     );
 }

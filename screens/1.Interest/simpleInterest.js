@@ -4,11 +4,12 @@ import { View, Text, Keyboard, TouchableWithoutFeedback, TouchableOpacity, TextI
 import Animated from 'react-native-reanimated';
 import { HeadingColor, height, inputStyle, MM, MS, TextInputBackground, width } from '../../constants/Layout';
 import { BackButton, CalculateButton, CalculationText, entering, exiting, formatNumber, InputInterest, InputPrincipal, InterestText, ResetButton, ScreenTitle, selectedCurrencyIndex, SimpleText, TextInputTitle, TextInputTitleResult, YearText } from '../../constants/ReUsableComponents';
-import { SwitchButtonGroup } from '../SwitchButtonGroup';
+import SegmentControl from '../SegmentControl';
 import { LoadInterstitial, LoadRewardedInterstitial, AdBanner, ShowRewardedInterstitial, ShowInterstitial } from '../../constants/AdMob';
 import PieChart from '../Pie';
 import { StatusBar } from 'expo-status-bar';
 import Colors from '../../constants/Colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export const SimpleInterest = ({ navigation }) => {
   const colorScheme = useColorScheme();
@@ -65,7 +66,7 @@ export const SimpleInterest = ({ navigation }) => {
   };
 
   return (
-    <View style={{ backgroundColor: themeColors.background, flex: 1 }}>
+    <SafeAreaView style={{ backgroundColor: themeColors.background, flex: 1 }} edges={['top']}>
       <StatusBar style='dark' />
       <ScrollView style={{ padding: 20 }} showsVerticalScrollIndicator={false}>
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
@@ -81,11 +82,10 @@ export const SimpleInterest = ({ navigation }) => {
               </View>
               <View>
                 <View style={{}}>
-                  <SwitchButtonGroup
-                    options={options}
-                    activeOption={date}
-                    onChange={handleOptionChange}
-                    widthOption={width / 5 - 10}
+                  <SegmentControl
+                    values={options}
+                    selectedIndex={options.indexOf(date)}
+                    onChange={(index) => handleOptionChange(options[index])}
                   />
                 </View>
                 <TextInput
@@ -125,6 +125,6 @@ export const SimpleInterest = ({ navigation }) => {
         </TouchableWithoutFeedback >
       </ScrollView>
       <AdBanner />
-    </View>
+    </SafeAreaView>
   );
 }
